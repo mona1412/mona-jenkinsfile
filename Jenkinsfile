@@ -1,23 +1,26 @@
-pipeline {
-    agent any
+pipeline { 
+    agent docker 
     options {
         skipStagesAfterUnstable()
     }
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building'
+        stage('BuildStaging’) { 
+            steps { 
+                echo ‘creating infra for staging’ 
             }
         }
-        stage('Test') {
+        stage(’DeployStaging’){
             steps {
-                echo 'Testing'
+                echo ‘deploying application on staging environment’ 
             }
         }
-        stage('Deploy') {
+        stage(‘ValidateStageDeployment’) {
             steps {
-                echo 'Deploying'
+                echo ‘validate deployment on staging’
             }
         }
     }
 }
+	
+
+    
